@@ -58,31 +58,72 @@ function win(theirs, mine) {
     }
 }
 
-for (var i = 0; i < round.length; ++i) {
-    switch (win(round[i].at(0), round[i].at(2))) {
-        case "win":
-            score += 6;
-            break;
-        case "draw": 
-            score += 3;
-            break;
-        case "loss":
-            score += 0;
-            break;
-    }
-    switch (round[i].at(2)) {
-        case "X":
-            score += 1;
-            break;
-        case "Y":
-            score += 2;
-            break;
-        case "Z":
-            score += 3;
-            break;
-        default:
-            console.log("error");
+function winTwo(theirs, mine) {
+    switch (mine) {
+        case "X":   //lose
+        switch (theirs) {
+            case "A":
+            case "B":
+            case "C":
+            default:
+                console.log("error");
+        }
+        break;
+        case "Y":   //draw
+        switch (theirs) {
+            case "A":
+            case "B":
+            case "C":
+            default:
+                console.log("error");
+        }
+        break;
+        case "Z":   //win
+        switch (theirs) {
+            case "A":
+            case "B":
+            case "C":
+            default:
+                console.log("error");
+        }
+        break;
     }
 }
+
+function partOne() {
+    for (var i = 0; i < round.length; ++i) {
+        switch (win(round[i].at(0), round[i].at(2))) {
+            case "win":
+                score += 6;
+                break;
+            case "draw": 
+                score += 3;
+                break;
+            case "loss":
+                score += 0;
+                break;
+        }
+        switch (round[i].at(2)) {
+            case "X":
+                score += 1;
+                break;
+            case "Y":
+                score += 2;
+                break;
+            case "Z":
+                score += 3;
+                break;
+            default:
+                console.log("error");
+        }
+    }
+}
+
+function partTwo() {
+    for (var i = 0; i < round.length; ++i) {
+        winTwo(round[i].at(0), round[i].at(2));
+    }
+}
+
 
 console.log(score)
